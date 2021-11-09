@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { preco } from './../../assets/global';
+import { Component, OnInit, Input } from '@angular/core';
+import * as myGlobals from '../../assets/global';
+import { ReservasService } from '../shared/reservas.service';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroUsuarioComponent implements OnInit {
 
-  constructor() { }
+  
+  
+  p =preco
+
+  constructor(public service: ReservasService ) { }
 
   ngOnInit(): void {
+    console.log(preco);
   }
+  
+  
 
 }

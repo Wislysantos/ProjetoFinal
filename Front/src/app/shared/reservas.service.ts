@@ -17,6 +17,7 @@ export class ReservasService {
   //readonly baseURL = 'https://localhost:44377/api/quartos'
   formData: Reservas = new Reservas();
   list: Reservas[];
+  valor: number;
 
   postReservas(){
     return this.http.post(this.baseURL, this.formData);
@@ -35,6 +36,15 @@ export class ReservasService {
     .toPromise()
     .then(res =>this.list = res as Reservas[]);
   }
+
+  getReservas(id: number){
+    return this.http.get(`${this.baseURL}/${id}`)
+  }
+
+  pegarPreco(p : number) {
+    this.valor = p  
+   
+ }
 
 }
 

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReservasComponent } from '../reservas/reservas.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario.component';
 
 describe('CadastroUsuarioComponent', () => {

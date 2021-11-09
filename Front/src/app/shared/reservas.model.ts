@@ -1,9 +1,9 @@
 export class Reservas {
 
   quartoID: number =0;
-  diariaValor:number =2;
-  tipoQuarto: string ="luxo";
-  ocuMaxima: number =2;
+  diariaValor:number =0;
+  tipoQuarto: string ='';
+  ocuMaxima: number = 0;
   disponivel: string = 'sim';
 
 

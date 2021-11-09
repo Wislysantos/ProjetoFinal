@@ -86,10 +86,9 @@
             <td (click)="povuarForm(quarto)">{{quarto.tipoQuarto}}</td>
             <td (click)="povuarForm(quarto)">{{quarto.diariaValor}}</td>
             <td>
-              <button routerLink="/cadastro-usuario" class="btn btn-primary">Reservar</button>
+              <button #reservas routerLink="/cadastro-usuario" class="btn btn-primary" (click)="service.pegarPreco(quarto.diariaValor)" >Reservar</button>
             </td>
           </tr>
-
       </tbody>
       <tfoot >
         <tr *ngIf="service.list == null">

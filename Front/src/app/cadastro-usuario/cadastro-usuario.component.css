@@ -9,7 +9,6 @@
 }
 
 .form {
-  border: 1px solid green;
   background-color: white;
   border-radius: 5px;
   padding: 15px;
@@ -39,11 +38,12 @@ label {
 }
 
 .detalhes {
-  border: 1px solid black;
+  background-color: white;
   height: 517px;
   width: 300px;
 }
 
 img {
-width: 100%;
+  border-radius: 5px;
+  width: 100%;
 }

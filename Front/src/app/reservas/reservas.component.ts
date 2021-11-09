@@ -1,9 +1,11 @@
+import { preco } from './../../assets/global';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { NgIf, NgIfContext } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ReservasService } from '../shared/reservas.service';
 import { Reservas } from '../shared/reservas.model';
+import * as myGlobals from '../../assets/global';
 
 
 
@@ -14,6 +16,9 @@ import { Reservas } from '../shared/reservas.model';
   styleUrls: ['./reservas.component.css']
 })
 export class ReservasComponent implements OnInit {
+
+  @Output() myEvent = new EventEmitter();
+
 
   constructor(public service: ReservasService,
      private toastr: ToastrService) {
@@ -26,6 +31,8 @@ export class ReservasComponent implements OnInit {
     this.service.formData = Object.assign({}, selectedRecord);
   }
 
+
+  public valor = 0
   public quartos: any=[];
   public DataEntrada = "";
   public DataSaida = "";
@@ -33,6 +40,9 @@ export class ReservasComponent implements OnInit {
   public QtdCrianca = "";
   private _filtroLista: string = '';
   public quartosFiltrados: any=[];
+
+  
+  
 
   public get filtroLista(): string{
     return this._filtroLista;
@@ -42,6 +52,10 @@ export class ReservasComponent implements OnInit {
     this._filtroLista = value;
     this.quartosFiltrados = this.filtroLista ? this.filtrarQuartos(this.filtroLista): this.quartos;
   }
+
+
+  
+  
 
   PequisarQuartos(){
     try{
@@ -74,5 +88,18 @@ export class ReservasComponent implements OnInit {
       evento.disponivel.toLocaleLowerCase().indexOf(filtrarPor) !== -1
     )
   }
+
+  guardarPreco(id: number){
+    
+    //for (let index = 0; index < this.service.list.length; index++) {
+      //if(this.service.list.)
+      
+   // }  
+    
+    
+  }
+
+
+
 }
 
