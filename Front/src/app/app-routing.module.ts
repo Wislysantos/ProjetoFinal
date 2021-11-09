@@ -1,6 +1,7 @@
+import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { GaleriaComponent } from './galeria/galeria.component';
-import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+
 import { HomeComponent } from './home/home.component';
 import { ContateNosComponent } from './contate-nos/contate-nos.component';
 import { NgModule } from '@angular/core';

@@ -11,7 +11,7 @@
       </div>
       <div class="col-md">
         <label for="">Data de Saida*</label><br>
-        <input type="date" data-type="datepicker" placeholder="Check in"[(ngModel)]="DataSaida">
+        <input type="date" data-type="datepicker" placeholder="Check in" [(ngModel)]="DataSaida">
       </div>
 
       <div class="col-md">
@@ -47,7 +47,7 @@
         <div class="form-inline">
           <div class="form-group mb-2">
             <label class="mr-2"></label><br>
-            <input type="text" class="form-control mr-2" placeholder="Buscar">
+            <input type="text" class="form-control mr-2" placeholder="Buscar" [(ngModel)]="filtroLista">
             <button class="btn btn-outline-success" >Buscar</button>
           </div>
         </div>
@@ -79,22 +79,22 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let quarto of service.list">
-          <td><img src="" alt=""></td>
-          <td>{{quarto.ocuMaxima}}</td>
-          <td>{{quarto.tipoQuarto}}</td>
-          <td>{{quarto.diariaValor}}</td>
-          <td>
-            <button routerLink="/cadastro-usuario" class="btn btn-primary">Reservar</button>
-          </td>
-        </tr>
-      </tbody>
+      <tbody >
+        <tr *ngFor="let quarto of service.list" >
+            <td></td>
+            <td (click)="povuarForm(quarto)">{{quarto.ocuMaxima}}</td>
+            <td (click)="povuarForm(quarto)">{{quarto.tipoQuarto}}</td>
+            <td (click)="povuarForm(quarto)">{{quarto.diariaValor}}</td>
+            <td>
+              <button routerLink="/cadastro-usuario" class="btn btn-primary">Reservar</button>
+            </td>
+          </tr>
 
-      <tfoot>
-        <tr>
+      </tbody>
+      <tfoot >
+        <tr *ngIf="service.list == null">
           <td colspan="8">
-            <h4>Nenhum evento marcado</h4>
+            <h4>Nenhum quarto disponível</h4>
           </td>
         </tr>
       </tfoot>

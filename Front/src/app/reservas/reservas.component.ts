@@ -2,8 +2,11 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { NgIf, NgIfContext } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { refreshList } from './shared/reservas.service';
-import { Reservas } from './shared/reservas';
+import { ReservasService } from '../shared/reservas.service';
+import { Reservas } from '../shared/reservas.model';
+
+
+
 
 @Component({
   selector: 'app-reservas',
@@ -11,11 +14,10 @@ import { Reservas } from './shared/reservas';
   styleUrls: ['./reservas.component.css']
 })
 export class ReservasComponent implements OnInit {
-  [x: string]: any;
 
-  readonly baseUrl =''
-
-  constructor(public service: ReservasComponent, private toastr: ToastrService) { }
+  constructor(public service: ReservasService,
+     private toastr: ToastrService) {
+     }
 
   ngOnInit(): void {
     this.service.refreshList();
@@ -24,11 +26,22 @@ export class ReservasComponent implements OnInit {
     this.service.formData = Object.assign({}, selectedRecord);
   }
 
+  public quartos: any=[];
   public DataEntrada = "";
   public DataSaida = "";
   public QtdPessoa = "";
   public QtdCrianca = "";
+  private _filtroLista: string = '';
+  public quartosFiltrados: any=[];
 
+  public get filtroLista(): string{
+    return this._filtroLista;
+  }
+
+  public set filtroLista(value: string){
+    this._filtroLista = value;
+    this.quartosFiltrados = this.filtroLista ? this.filtrarQuartos(this.filtroLista): this.quartos;
+  }
 
   PequisarQuartos(){
     try{
@@ -38,7 +51,7 @@ export class ReservasComponent implements OnInit {
         alert("Por favor Data de entrada não pode ser maior que data de saida")
       }else{
         console.log();
-        alert(refreshList());
+        alert();
 
       }
 
@@ -53,8 +66,13 @@ export class ReservasComponent implements OnInit {
 
   }
 
-
-
+  filtrarQuartos(filtrarPor: string): any{
+    filtrarPor= filtrarPor.toLocaleLowerCase();
+    return this.quartos.filter(
+      (evento: {tipoQuarto: string; ocuMaxima: string; disponivel:string}) => evento.tipoQuarto.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
+      evento.ocuMaxima.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
+      evento.disponivel.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+    )
+  }
 }
-
 
